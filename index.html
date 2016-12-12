@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>BalticApp</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Auth0 lock script -->
+   <script src="https://cdn.auth0.com/js/lock/10.6/lock.min.js"></script>
+
+   <!-- Setting the right viewport -->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+ </head>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 550px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 900px) {
+      .row.content {height: auto;}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse visible-xs">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Dashboard</a></li>
+        <li><a href="#">Age</a></li>
+        <li><a href="#">Gender</a></li>
+        <li><a href="#">Geo</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Modal -->
+<div class="modal" id="my_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 id="modalType" class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        <p id="modalId"></p>
+        <!--<input type="text" name="contentId" value=""/>-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-2 sidenav hidden-xs">
+      <h2>BalticApp Dashboard</h2>
+      <!-- index.html -->
+
+      <img alt="avatar" id="avatar" style="display:none;">
+    <p>Welcome <span id="nickname"></span></p>
+
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#section1">Dashboard</a></li>
+        <li><a href="#section2">Age</a></li>
+        <li><a href="#section3">Gender</a></li>
+        <li><a href="#section3">Geo</a></li>
+        <button type="submit" id="btn-login">Sign In</button>
+        <button type"submit" id="btn-logout" onClick="logOut()">Log out</button>
+
+      </ul><br>
+    </div>
+    <br>
+
+    <div class="col-sm-9">
+      <div class="well">
+        <h4>Dashboard</h4>
+        <p id="serverStatus">Loading server status</p>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="well" id="categoryList">
+            <h4>Categories</h4>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well">
+            <h4>Create Category</h4>
+               Title<br>
+              <input id="categoryTitle" type="text" name="title" placeholder="Title" value="">
+              <br>
+              Description
+              <br>
+              <input id="categoryDescription" type="text" placeholder="Description" value="">
+              <br>
+              Image
+              <br>
+              <input id="categoryImageInput" type="file"value="">
+              <br>
+              <input type="submit" onCLick="createCategory()" value="Create">
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="well" id="placeList">
+            <h4>Places</h4>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well">
+            <h4>Create place</h4>
+               Title<br>
+              <input id="title" type="text" name="title" placeholder="Title" value="">
+              <br>
+              Latitude
+              <br>
+              <input id="latitude" type="text" name="lastname" placeholder="Latitude" value="">
+              <br>
+              Longitude
+              <br>
+              <input id="longitude" type="text" name="lastname" placeholder="Longitude" value="">
+              <br>
+              Type
+              <br>
+              <input id="type" type="text" name="lastname" placeholder="Type" value="">
+              <br>
+              Description
+              <br>
+              <input id="description" type="text" name="lastname" placeholder="Description" value="">
+              <br>
+              Radius
+              <br>
+              <input id="radius" type="text" name="lastname" placeholder="Radius" value="">
+              <br>
+              <input type="submit" onCLick="createPlace()" value="Create">
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="well" id="reportList">
+            <h4>Reports</h4>
+            <p id="reportStatus">Loading reports</p>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="well">
+            <h4>Organize Reports</h4>
+            <br>
+            <input type="submit" onCLick="sortReportsBy('votes')" value="Votes">
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="well">
+            <p>Text</p>
+            <p>Text</p>
+            <p>Text</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well">
+            <p>Text</p>
+            <p>Text</p>
+            <p>Text</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well">
+            <p>Text</p>
+            <p>Text</p>
+            <p>Text</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="well">
+            <p>Text</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well">
+            <p>Text</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="./apiManager.js"></script>
+<script src="./authentication.js"></script>
+<script src="./index.js"></script>
+<script src="./place.js"></script>
+<script src="./categories.js"></script>
+<script src='./reports.js'></script>
+<script src="./modalHandler.js"></script>
+</body>
+
+
+</html>
