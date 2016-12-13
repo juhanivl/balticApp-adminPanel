@@ -53,7 +53,7 @@
   </div>
 </nav>
 
-<!-- Modal -->
+<!--PLace Modal -->
 <div class="modal" id="my_modal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -83,6 +83,27 @@
       <div>
         <button type="button" class="btn btn-primary" onClick="editPlace()" >Edit Place</button>
         <button type="button" class="btn btn-danger" onClick="deletePlace()" >Delete Place</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Report  Modal -->
+<div class="modal" id="report-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 id="modalType" class="modal-title">Report modal</h4>
+      </div>
+      <div id="modalBody" class="report-modal-body">
+
+      </div>
+      <div>
+        <button type="button" class="btn btn-danger" onClick="deleteReport()" >Delete Report</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -207,7 +228,6 @@
         <div class="col-sm-8">
           <div class="well" id="reportList">
             <h4>Reports</h4>
-            <p id="reportStatus">Loading reports</p>
           </div>
         </div>
 
@@ -267,8 +287,9 @@
 <script src="./place.js"></script>
 <script src="./categories.js"></script>
 <script src='./reports.js'></script>
-<script src="./modalHandler.js"></script>
+<script src="./placeModalHandler.js"></script>
 <script src="./weatherData.js"></script>
+<script src="./reportModalHandler.js"></script>
 </body>
 
 
