@@ -40,5 +40,32 @@ function createPlace(){
     radius: document.getElementById('radius').value
   }
 
-  createSome("place", createPlaceObject, id_token);
+  createSome("place/create", createPlaceObject, id_token);
+}
+
+function editPlace(){
+  console.log("editPLace");
+  var id_token = localStorage.getItem('id_token')
+
+  var editPlaceObject = {
+    id: document.getElementById("placeId").innerHTML,
+    title: document.getElementById("placeTitle").value,
+    location: {
+      long: document.getElementById("placeLongitude").value,
+      lat: document.getElementById("placeLatitude").value
+    },
+    type: document.getElementById('placeType').value,
+    description: document.getElementById('placeDescription').value,
+    radius: document.getElementById('placeRadius').value
+  }
+
+  createSome("place/update", editPlaceObject, id_token)
+  .then(function(response){
+    console.log("place/update response: " , response);
+    return response;
+  })
+}
+
+function deletePlace(){
+  console.log("deletePlace");
 }

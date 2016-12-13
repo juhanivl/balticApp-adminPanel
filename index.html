@@ -61,9 +61,25 @@
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
           <h4 id="modalType" class="modal-title"></h4>
       </div>
-      <div class="modal-body">
-        <p id="modalId"></p>
+      <div id="modalBody" class="modal-body">
+        <p id="placeId"></p>
         <!--<input type="text" name="contentId" value=""/>-->
+        </br>Title
+        <input id="placeTitle" value="" type="text" placeholder="placeTitle" />
+        </br>Description
+        <input id="placeDescription" value="" type="text" placeholder="placeDescription" />
+        </br>Type
+        <input id="placeType" value="" type="text" placeholder="placeType" />
+        </br>Latitude
+        <input id="placeLatitude" value="" type="text" placeholder="placeLatitude" />
+        </br>Longitude
+        <input id="placeLongitude" value="" type="text" placeholder="placeLongitude" />
+        </br>Radius
+        <input id="placeRadius" value="" type="text" placeholder="placeRadius" />
+      </div>
+      <div>
+        <button type="button" class="btn btn-primary" onClick="editPlace()" >Edit Place</button>
+        <button type="button" class="btn btn-danger" onClick="deletePlace()" >Delete Place</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -97,6 +113,10 @@
       <div class="well">
         <h4>Dashboard</h4>
         <p id="serverStatus">Loading server status</p>
+        <p id="weatherDataStatus"></p>
+        <input type="submit" onCLick="startSendindWeatherData()" value="Start sending weatherData">
+        <input type="submit" onCLick="stopSendindWeatherData()" value="Stop sending weatherData">
+
       </div>
 
       <div class="row">
@@ -229,6 +249,7 @@
 <script src="./categories.js"></script>
 <script src='./reports.js'></script>
 <script src="./modalHandler.js"></script>
+<script src="./weatherData.js"></script>
 </body>
 
 
