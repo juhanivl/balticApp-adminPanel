@@ -63,6 +63,9 @@
       </div>
       <div id="modalBody" class="modal-body">
         <p id="placeId"></p>
+        <p id="placeTotalVoteCount"></p>
+        <p id="placeUpvoteCount"></p>
+        <p id="placeDownvoteCount"></p>
         <!--<input type="text" name="contentId" value=""/>-->
         </br>Title
         <input id="placeTitle" value="" type="text" placeholder="placeTitle" />
@@ -117,6 +120,22 @@
         <input type="submit" onCLick="startSendindWeatherData()" value="Start sending weatherData">
         <input type="submit" onCLick="stopSendindWeatherData()" value="Stop sending weatherData">
 
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="well" id="userList">
+            <h4>Users</h4>
+            <p id="reportStatus">Loading users</p>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="well">
+            <h4>Organize Users</h4>
+            <br>
+          </div>
+        </div>
       </div>
 
       <div class="row">

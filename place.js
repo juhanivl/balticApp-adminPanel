@@ -1,3 +1,5 @@
+var id_token = localStorage.getItem('id_token')
+
 //get the basic info of the application: number of users, number of places, number of posts and...
 function getPlaceInfo(){
   getSome("place")
@@ -45,7 +47,6 @@ function createPlace(){
 
 function editPlace(){
   console.log("editPLace");
-  var id_token = localStorage.getItem('id_token')
 
   var editPlaceObject = {
     id: document.getElementById("placeId").innerHTML,
@@ -62,10 +63,24 @@ function editPlace(){
   createSome("place/update", editPlaceObject, id_token)
   .then(function(response){
     console.log("place/update response: " , response);
+    if(response.status == 200){
+      $('#my_modal').modal('toggle');
+      alert("Place edited succesfully!");
+    }else{
+      $('#my_modal').modal('toggle');
+      alert("Couldn't edit place");
+    }
     return response;
   })
 }
 
 function deletePlace(){
-  console.log("deletePlace");
+  var placeId = document.getElementById("placeId").innerHTML;
+
+  getSomeAsAdmin("/place/remove?id="+placeId , id_token )
+  .then(function(response){
+    console.log("deletePlaceResposne: " , response);
+    return response;
+  })
+
 }
