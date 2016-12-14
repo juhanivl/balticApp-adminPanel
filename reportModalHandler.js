@@ -10,22 +10,13 @@ $('#report-modal').on('show.bs.modal', function(e) {
       .then(function(text){
         //document.getElementById("placesStatus").innerHTML = ;
         var text = JSON.parse(text);
-        console.log("getSome('report?id='+contentId" , text);
-        /*
-        document.getElementById("placeTitle").value = text.title
-        document.getElementById("placeTotalVoteCount").innerHTML = "Total votes: " + text.votes.length;
-        document.getElementById("placeDescription").value = text.description
-        document.getElementById("placeId").innerHTML = text.id
-        document.getElementById("placeType").value = text.type
-        document.getElementById("placeLongitude").value = text.location.long
-        document.getElementById("placeLatitude").value = text.location.lat
-        document.getElementById("placeRadius").value = text.radius
-        getUpAndDownVotes(text.votes);
-        */
+        console.log("getSome('report?id='+contentId" , text[0]);
+        document.getElementById("reportId").innerHTML = text[0].id;
+        document.getElementById("reportDescription").innerHTML = text[0].description;
+        document.getElementById("reportImage").setAttribute('src', text[0].image_url)
+        document.getElementById("reportImageUrl").innerHTML = text[0].image_url;
+        document.getElementById("reportLongitude").innerHTML = "longitude: " + text[0].location.long
+        document.getElementById("reportLatitude").innerHTML = "latitude: " + text[0].location.lat
+
       });
-
 });
-
-function deleteReport(){
-
-}
