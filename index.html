@@ -93,12 +93,18 @@
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
           <h4 id="modalType" class="modal-title">Report modal</h4>
       </div>
-      <div id="modalBody" class="report-modal-body">
-        <img id="reportImage" src="" alt="loading..." style="width:304px;height:228px;">
+      <div id="modalBody" class="modal-body">
+        <img id="reportImage" src="" alt="loading..." style="width:250px;height:250px;">
+        <br/>
+        <b>id</b>
         <p id="reportId"></p>
+        <b>Description</b>
         <p id="reportDescription"></p>
+        <b>url</b>
         <p id="reportImageUrl"></p>
+        <b>Longitude</b>
         <p id="reportLongitude"></p>
+        <b>Latitude</b>
         <p id="reportLatitude"></p>
 
 
@@ -122,13 +128,18 @@
           <h4 id="modalType" class="modal-title"></h4>
       </div>
       <div id="modalBody" class="modal-body">
+        <b>id</b>
         <p id="userId"></p>
+        <b>Name</b>
         <p id="userName"></p>
+        <b>Gender</b>
+        <p id="userGender"></p>
+        <b>Bio</b>
+        <p id="userBio"></p>
       </div>
       <div>
-        <button type="button" class="btn btn-danger" onClick="deleteUser()" >Delete User</button>
-        <button type="button" class="btn btn-warning" onClick="makeUserAdmin()" >Make Admin User</button>
-
+        <!--<button type="button" class="btn btn-danger" onClick="deleteUser()" >Delete User</button>
+        <button type="button" class="btn btn-warning" onClick="makeUserAdmin()" >Make Admin User</button>-->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

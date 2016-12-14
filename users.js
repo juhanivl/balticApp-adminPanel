@@ -27,8 +27,3 @@ function deleteUser(){
   console.log("deleteUser");
 
 }
-
-function makeUserAdmin(){
-  console.log("makeUserAdmin");
-
-}

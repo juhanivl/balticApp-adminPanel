@@ -10,7 +10,11 @@ $('#user-modal').on('show.bs.modal', function(e) {
       .then(function(text){
         //document.getElementById("placesStatus").innerHTML = ;
         var text = JSON.parse(text);
-        console.log("getSome('report?id='+contentId" , text);
-        
+        console.log("getSome('user?id='+contentId" , text);
+        document.getElementById("userId").innerHTML = text.id;
+        document.getElementById("userName").innerHTML = text.username;
+        document.getElementById("userGender").innerHTML = text.gender;
+        document.getElementById("userBio").innerHTML = text.bio;
+
       });
 });
